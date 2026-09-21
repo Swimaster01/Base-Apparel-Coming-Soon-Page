@@ -1,0 +1,84 @@
+:root {
+  /* Primary Colors */
+  --color-pink-400: hsl(0, 36%, 70%);
+  --color-red-500: hsl(0, 93%, 68%);
+
+  /* Neutral Colors */
+  --color-gray-900: hsl(0, 6%, 24%);
+
+  /* Gradients */
+  --bg-gradient-page: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  --bg-gradient-btn: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+
+  /* Typography */
+  --font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  color: var(--color-pink-400);
+  min-height: 100vh;
+  margin: 0;
+
+  /* Layering the page gradient behind the desktop background pattern SVG */
+  background-image: url('/images/bg-pattern-desktop.svg'), var(--bg-gradient-page);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    background-color: #ecf2f8;
+}
+
+
+
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 1000px;
+
+    background-color:ghostwhite;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+.content {
+    background-image: ;
+}
+
+.hero-img img {
+    width: 400px
+}
+
+.hero {
+    padding: 40px 100px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin-bottom: 100px;
+}
