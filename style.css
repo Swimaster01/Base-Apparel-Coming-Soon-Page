@@ -1,84 +1,182 @@
-:root {
-  /* Primary Colors */
-  --color-pink-400: hsl(0, 36%, 70%);
-  --color-red-500: hsl(0, 93%, 68%);
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-  /* Neutral Colors */
-  --color-gray-900: hsl(0, 6%, 24%);
+/* --- DESIGN TOKENS --- */
+:root {
+  /* Colors */
+  --clr-pink-400: #ce9797;
+  --clr-red-500: hsl(0, 93%, 68%);
+  --clr-gray-900: hsl(0, 6%, 24%);
 
   /* Gradients */
-  --bg-gradient-page: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
-  --bg-gradient-btn: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  --bg-gradient-main: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  --bg-gradient-btn: linear-gradient(135deg, #f8bfbf, #ee8c8c);
 
   /* Typography */
-  --font-family: 'Josefin Sans', sans-serif;
+  --ff-base: 'Josefin Sans', sans-serif;
+  --fs-body: 16px;
 }
 
-
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: 16px;
-  color: var(--color-pink-400);
   min-height: 100vh;
   margin: 0;
-
-  /* Layering the page gradient behind the desktop background pattern SVG */
-  background-image: url('/images/bg-pattern-desktop.svg'), var(--bg-gradient-page);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  font-family: var(--ff-base);
+  font-size: var(--fs-body);
 }
 
 main {
-    position: relative;
-    height: 100vh;
-    background-color: #ecf2f8;
+  position: relative;
+  min-height: 100vh;
+  /* Main background gradient specified in design tokens */
+  background: var(--bg-gradient-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
 .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 1000px;
+  max-width: 90%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
 
-    width: 1000px;
+/* LEFT SIDE (Content & Form Area) */
+.hero {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
-    background-color:ghostwhite;
-    border-radius: 10px;
+  /* Layering the SVG background pattern over the main gradient */
+  background-image: url('images/bg-pattern-desktop.svg'), var(--bg-gradient-main);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
-    display: flex;
-    flex-direction: row-reverse;
-    
+.logo img {
+  margin-bottom: 50px;
+  width: 140px;
 }
 
 .content {
-    background-image: ;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.heading h1 {
+  font-family: var(--ff-base);
+  font-weight: 300;
+  font-size: 3rem;
+  letter-spacing: 0.8rem;
+  color: var(--clr-pink-400);
+  text-transform: uppercase;
+}
+
+.heading h2 {
+  font-family: var(--ff-base);
+  font-weight: 600; /* Design uses 600 weight for heavy text */
+  font-size: 3rem;
+  letter-spacing: 0.8rem;
+  color: var(--clr-gray-900);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.para p {
+  font-family: var(--ff-base);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--clr-pink-400);
+  line-height: 1.6;
+}
+
+/* HERO IMAGE (RIGHT SIDE) */
+.hero-img {
+  display: flex;
 }
 
 .hero-img img {
-    width: 400px
+  width: 400px;
+  height: 100%;
+  object-fit: cover;
 }
 
-.hero {
-    padding: 40px 100px;
-
-    display: flex;
-    flex-direction: column;
+/* FORM & BUTTON */
+.sub-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 15px;
 }
 
-.logo {
-    margin-bottom: 100px;
+.email-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 80px 0 30px;
+  border: 1px solid var(--clr-pink-400);
+  border-radius: 30px;
+  background: transparent;
+  font-family: var(--ff-base);
+  font-size: 15px;
+  color: var(--clr-gray-900);
+  outline: none;
+}
+
+.email-input::placeholder {
+  color: var(--clr-pink-400);
+  opacity: 0.7;
+}
+
+.sub-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
+  width: 80px;
+  border: none;
+  border-radius: 30px;
+  background: var(--bg-gradient-btn);
+  box-shadow: 0px 10px 20px rgba(238, 140, 140, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+.error-icon {
+  display: none;
+  position: absolute;
+  right: 95px;
+  width: 20px;
+  height: 20px;
+}
+
+
+.sub-button:hover {
+  opacity: 0.8;
+  box-shadow: 0px 12px 24px rgba(238, 140, 140, 0.6);
+}
+
+.form p {
+  display: none;
 }

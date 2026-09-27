@@ -14,7 +14,7 @@
             </section>
             <section class="hero">
                 <section class="logo">
-                    <img src="/images/logo.svg" alt="">
+                    <img src="images/logo.svg" alt="">
 
                 </section>
                 <section class="content">
@@ -27,12 +27,19 @@
                     </section>
 
                     <section class="form">
-                        <form class="sub-form" action="#" method="post">
-                            <input type="email" class="email-input" placeholder="Email Address" required>
+                        <form class="sub-form" action="#" method="post" novalidate>
+
+                            <input type="email" class="email-input" placeholder="Email Address">
+
+                            <img class="error-icon" src="images/icon-error.svg" alt="">
+
                             <button type="submit" class="sub-button" aria-label="submit">
+
                                 <img src="images/icon-arrow.svg" alt="">
                             </button>
                         </form>
+                        <p class="error-message">Please provide a valid email address</p>
+
                     </section>
 
                 </section>
