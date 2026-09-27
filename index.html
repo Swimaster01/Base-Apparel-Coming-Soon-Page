@@ -3,50 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Base Apparel - Coming Soon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
         <section class="card">
-            <section class="hero-img">
-                <img src="images/hero-desktop.webp" alt="">
-            </section>
-            <section class="hero">
-                <section class="logo">
-                    <img src="images/logo.svg" alt="">
+            <!-- Header Logo (At top for mobile, positioned inside left column for desktop) -->
+            <header class="logo">
+                <img src="images/logo.svg" alt="Base Apparel Logo">
+            </header>
 
-                </section>
+            <!-- Hero Image Section -->
+            <section class="hero-img">
+                <picture>
+                    <source media="(max-width: 660px)" srcset="images/hero-mobile.jpg">
+                    <img src="images/hero-desktop.webp" alt="Model wearing fashion apparel">
+                </picture>
+            </section>
+
+            <!-- Content Section -->
+            <section class="hero">
                 <section class="content">
                     <section class="heading">
-                        <h1> WE'RE </h1>
-                        <h2> COMING SOON </h2>
+                        <h1><span>We're</span> coming soon</h1>
                     </section>
                     <section class="para">
-                        <p> Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay upto-date with announcements and our launch deals </p>
+                        <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.</p>
                     </section>
 
                     <section class="form">
                         <form class="sub-form" action="#" method="post" novalidate>
-
                             <input type="email" class="email-input" placeholder="Email Address">
-
-                            <img class="error-icon" src="images/icon-error.svg" alt="">
-
-                            <button type="submit" class="sub-button" aria-label="submit">
-
-                                <img src="images/icon-arrow.svg" alt="">
+                            <img class="error-icon" src="images/icon-error.svg" alt="Error Icon">
+                            <button type="submit" class="sub-button" aria-label="Submit">
+                                <img src="images/icon-arrow.svg" alt="Submit Arrow">
                             </button>
                         </form>
-                        <p class="error-message">Please provide a valid email address</p>
-
+                        <p class="error-message">Please provide a valid email</p>
                     </section>
-
                 </section>
-
             </section>
         </section>
-
     </main>
     <script src="script.js"></script>
 </body>

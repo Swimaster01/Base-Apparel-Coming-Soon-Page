@@ -2,16 +2,13 @@
 
 /* --- DESIGN TOKENS --- */
 :root {
-  /* Colors */
   --clr-pink-400: #ce9797;
   --clr-red-500: hsl(0, 93%, 68%);
   --clr-gray-900: hsl(0, 6%, 24%);
 
-  /* Gradients */
   --bg-gradient-main: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
   --bg-gradient-btn: linear-gradient(135deg, #f8bfbf, #ee8c8c);
 
-  /* Typography */
   --ff-base: 'Josefin Sans', sans-serif;
   --fs-body: 16px;
 }
@@ -22,80 +19,80 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   min-height: 100vh;
   margin: 0;
   font-family: var(--ff-base);
   font-size: var(--fs-body);
+  background: var(--bg-gradient-main);
 }
 
 main {
-  position: relative;
   min-height: 100vh;
-  /* Main background gradient specified in design tokens */
-  background: var(--bg-gradient-main);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* --- DESKTOP LAYOUT --- */
 .card {
   width: 1000px;
-  max-width: 90%;
+  max-width: 100%;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
   flex-direction: row-reverse;
   overflow: hidden;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
-/* LEFT SIDE (Content & Form Area) */
+/* DESKTOP LOGO */
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  z-index: 10;
+}
+
+.logo img {
+  width: 140px;
+}
+
+/* DESKTOP LEFT CONTENT */
 .hero {
-  padding: 50px;
+  padding: 140px 80px 80px 50px;
   display: flex;
   flex-direction: column;
   flex: 1;
 
-  /* Layering the SVG background pattern over the main gradient */
   background-image: url('images/bg-pattern-desktop.svg'), var(--bg-gradient-main);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.logo img {
-  margin-bottom: 50px;
-  width: 140px;
-}
-
 .content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
+  max-width: 450px;
 }
 
 .heading h1 {
   font-family: var(--ff-base);
   font-weight: 300;
-  font-size: 3rem;
+  font-size: 3.5rem;
   letter-spacing: 0.8rem;
   color: var(--clr-pink-400);
   text-transform: uppercase;
+  line-height: 1.1;
 }
 
-.heading h2 {
-  font-family: var(--ff-base);
-  font-weight: 600; /* Design uses 600 weight for heavy text */
-  font-size: 3rem;
-  letter-spacing: 0.8rem;
+.heading h1 span {
+  font-weight: 600;
   color: var(--clr-gray-900);
-  text-transform: uppercase;
-  line-height: 1;
+  display: block;
 }
 
 .para p {
@@ -106,31 +103,39 @@ main {
   line-height: 1.6;
 }
 
-/* HERO IMAGE (RIGHT SIDE) */
+/* DESKTOP HERO IMAGE */
 .hero-img {
-  display: flex;
+  width: 400px;
+  flex-shrink: 0;
 }
 
+.hero-img picture,
 .hero-img img {
-  width: 400px;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* FORM & BUTTON */
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
 .sub-form {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 450px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .email-input {
   width: 100%;
   height: 50px;
-  padding: 0 80px 0 30px;
+  padding: 0 110px 0 30px;
   border: 1px solid var(--clr-pink-400);
   border-radius: 30px;
   background: transparent;
@@ -138,6 +143,10 @@ main {
   font-size: 15px;
   color: var(--clr-gray-900);
   outline: none;
+}
+
+.email-input.error {
+  border-color: var(--clr-red-500);
 }
 
 .email-input::placeholder {
@@ -162,6 +171,10 @@ main {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.sub-button:hover {
+  opacity: 0.85;
+  box-shadow: 0px 12px 24px rgba(238, 140, 140, 0.6);
+}
 
 .error-icon {
   display: none;
@@ -171,12 +184,97 @@ main {
   height: 20px;
 }
 
-
-.sub-button:hover {
-  opacity: 0.8;
-  box-shadow: 0px 12px 24px rgba(238, 140, 140, 0.6);
+.error-message {
+  display: none;
+  color: var(--clr-red-500);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  padding-left: 30px;
+  text-align: left;
 }
 
-.form p {
-  display: none;
+/* --- MOBILE RESPONSIVE STATE --- */
+@media (max-width: 660px) {
+  main {
+    display: block;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none;
+    position: static;
+  }
+
+  /* 1. Logo at top */
+  .logo {
+    position: static;
+    padding: 30px 32px 25px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  /* 2. Hero Image in the middle */
+  .hero-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  /* 3. Text & Form Content at bottom */
+  .hero {
+    width: 100%;
+    padding: 40px 32px 60px;
+    background-image: var(--bg-gradient-main);
+  }
+
+  .content {
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    margin: 0 auto;
+  }
+
+  .heading h1 {
+    font-size: 2.2rem;
+    letter-spacing: 0.6rem;
+    line-height: 1.1;
+  }
+
+  .para p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .email-input {
+    padding: 0 100px 0 24px;
+  }
+
+  .sub-button {
+    width: 65px;
+  }
+
+  .error-icon {
+    right: 80px;
+  }
+  
+  .error-message {
+    text-align: center;
+    padding-left: 0;
+  }
 }
